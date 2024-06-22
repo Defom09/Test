@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Careful!</title>
+    <meta name="description" content="Click the button for a surprise!">
+    <meta property="og:title" content="Be Careful!">
+    <meta property="og:description" content="Click the button for a surprise!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://defom09.github.io/Be-careful-/">
+    <meta property="og:image" content="https://images.app.goo.gl/vxhh9TccFwwDM6og8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            transition: background-color 0.5s;
+            background-color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #message, #scaryVideo {
+            display: none;
+            margin-top: 20px;
+        }
+        #scaryVideo iframe {
+            width: 100%;
+            height: auto;
+            max-width: 560px;
+            aspect-ratio: 16 / 9; /* Maintain a 16:9 aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the button for a surprise!</h1>
+    <button id="prankButton">Click me!</button>
+    <div id="message">Be careful on that site web</div>
+    <div id="scaryVideo">
+        <iframe src="https://www.youtube.com/embed/GMgsFZ4rkEI?autoplay=1" 
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const button = document.getElementById('prankButton');
+        const message = document.getElementById('message');
+        const scaryVideo = document.getElementById('scaryVideo');
+        const colors = ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33A1'];
+
+        function setVolumeToMax() {
+            // Note: This method will only work in certain contexts, usually user-triggered events.
+            // Web APIs for adjusting volume directly are limited due to security and privacy concerns.
+            // Simulating maximum volume using an alert as direct volume control is not feasible.
+            alert("Volume set to maximum!");
+        }
+
+        button.addEventListener('click', () => {
+            setVolumeToMax();
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+                scaryVideo.style.display = 'block';
+            }, 2000); // Show the message for 2 seconds before showing the video
+        });
+    </script>
+</body>
+</html>
